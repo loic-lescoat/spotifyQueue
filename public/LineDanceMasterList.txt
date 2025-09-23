@@ -1,5 +1,5 @@
-Man! I Feel Like a Woman,Electric Slide
-Shivers,Gives Me Shivers
+"Man! I Feel Like a Woman","Electric Slide"
+"Shivers","Gives Me Shivers"
 APT,Gives Me Shivers
 Shake It Off,Gives Me Shivers
 September,Body Rock
@@ -18,7 +18,7 @@ Can't Believe It (feat. Pitbull),Off The Chain
 P.Y.T. (Pretty Young Thing),PYT
 Scream,Ooh Baby Baby
 Do-Si-Don'tcha,Ring On Your Wranglers
-Bad Case Of Loving You (Doctor, Doctor),Doctor, Doctor
+"Bad Case Of Loving You (Doctor, Doctor)","Doctor, Doctor"
 Sin Wagon,Lightning Polka
 Levitating (feat. DaBaby),Fly Away With Me
 Dirty Girl,Get Dirty
@@ -43,7 +43,7 @@ Dicked Down in Dallas,Chasing The D
 50 Ways to Say Goodbye,Walk The Line
 Freight Train,Walk The Line
 America's Sweetheart,Chomping At The Bit
-1, 2 Many,Half Past Tipsy
+"1, 2 Many","Half Past Tipsy"
 Honky-Tonk Highway,That Honky Tonk Highway
 Drunk (And I Don't Wanna Go Home),Don't Wanna Go Home
 Next Girl,The Next Girl

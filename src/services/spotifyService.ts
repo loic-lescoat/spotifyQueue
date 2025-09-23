@@ -1,5 +1,5 @@
 
-import { refreshAccessToken } from "./authCodeWithPkce";
+import { refreshAccessToken } from "../authCodeWithPkce.ts";
 // TODO make this an env variable
 const clientId = "bdb65f4eee034a86828ae4c9ee70a8e6"; // Replace with your client id
 
