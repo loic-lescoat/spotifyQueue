@@ -129,15 +129,15 @@ function displayNextThreeSongs(queue: QueueItem[]) {
         const div = document.createElement("div");
         div.className = "songItem";
 
-        const nameSpan = document.createElement("span");
-        nameSpan.innerText = item.name;
-
         const img = document.createElement("img");
         img.src = "album" in item ? item.album.images[0]?.url ?? "" : item.images[0]?.url ?? "";
         img.alt = item.name;
 
-        div.appendChild(nameSpan);
+        const nameSpan = document.createElement("span");
+        nameSpan.innerText = item.name;
+
         div.appendChild(img);
+        div.appendChild(nameSpan);
         container.appendChild(div);
     });
 }

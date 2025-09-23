@@ -1,4 +1,4 @@
-import "/src/style.css";
+import "/src/css/style.css";
 import {redirectToAuthCodeFlow, getAccessToken, refreshAccessToken, getCookie, setCookie, deleteCookie} from "./authCodeWithPkce";
 import {populateProfileImage, populateQueue, startQueuePolling} from "./LoadElements.ts"
 import {fetchQueue, fetchProfile} from "./services/spotifyService.ts"
