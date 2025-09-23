@@ -100,11 +100,11 @@ function saveAccessAndRefreshToken(accessToken: string, refreshToken: string, ex
     if (accessToken != null) {
         localStorage.setItem("access_token", accessToken);
         setCookie('spotifyAccessTokenForMyApp', accessToken, 7);
+        setCookie('spotifyTokenExpiryForMyApp', (Date.now() + expiresIn * 1000).toString(), 7);
     }
     if (refreshToken != null) {
         localStorage.setItem("refresh_token", refreshToken);
         setCookie('spotifyRefreshTokenForMyApp', refreshToken, 7);
-        setCookie('spotifyTokenExpiryForMyApp', (Date.now() + expiresIn * 1000).toString(), 7);
     }
 }
 
