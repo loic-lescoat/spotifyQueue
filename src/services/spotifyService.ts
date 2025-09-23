@@ -4,7 +4,7 @@ import { refreshAccessToken } from "../authCodeWithPkce.ts";
 const clientId = "bdb65f4eee034a86828ae4c9ee70a8e6"; // Replace with your client id
 
 export async function fetchProfile(token: string): Promise<UserProfile> {
-    console.log(`Fetching profile for ${token}`);
+    console.log('Fetching user profile');
     const result = await fetchWithAuth(
         "https://api.spotify.com/v1/me",
         token,
@@ -55,9 +55,8 @@ async function fetchWithAuth(url: string, token: string, clientId: string) {
 
 // Example fetchCurrentlyPlaying function
 export async function fetchCurrentlyPlaying(token: string): Promise<any> {
-    const res = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-        headers: { Authorization: `Bearer ${token}` }
-    });
+    const res = await fetchWithAuth("https://api.spotify.com/v1/me/player/currently-playing", token, clientId);
+
     if (res.status === 204) return null;  // nothing playing
     return await res.json();
 }

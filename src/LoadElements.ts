@@ -32,8 +32,6 @@ export function populateQueue(fullQueue: FullQueue) {
 
     document.getElementById("songTitle")!.innerText = fullQueue.currently_playing.name;
     let danceName = songMap.get(fullQueue.currently_playing.name);
-    console.log("Dance Map:", songMap);
-    console.log("Dance Name:", danceName);
     const danceTitleElmnt = document.getElementById("danceTitle");
     if (danceTitleElmnt) {
         if (danceName) {

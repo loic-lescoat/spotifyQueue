@@ -23,7 +23,6 @@ async function init() {
     let accessToken: string | null = null;
     let refreshToken: string | null = null;
 
-    console.log("code: ", code);
     if (code) {
         try {
             console.log("Exchanging code for new access token...");
@@ -49,7 +48,6 @@ async function init() {
     if(refreshToken == "undefined"){
         refreshToken = null;
     }
-    console.log("accessToken: ", accessToken);
 
     try {
         // Only retry locally if token missing or expired, up to maxRetries

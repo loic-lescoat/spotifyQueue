@@ -52,7 +52,6 @@ async function generateCodeChallenge(codeVerifier: string) {
 
 export async function getAccessToken(clientId: string, code: string): Promise<string> {
     const verifier = localStorage.getItem("verifier");
-    console.log("verifier:", verifier);
 
     const params = new URLSearchParams();
     params.append("client_id", clientId);
@@ -67,7 +66,6 @@ export async function getAccessToken(clientId: string, code: string): Promise<st
         body: params
     });
     const data = await result.json();
-    console.log("spotify token response:", data);
 
     saveAccessAndRefreshToken(data.access_token, data.refresh_token, data.expires_in);
 
