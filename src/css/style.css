@@ -147,16 +147,13 @@ body {
     border-radius: 10px;
 }
 
-/* Song text */
 .songItem span {
     margin-top: 0.5rem;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: white;
-    text-shadow: none; /* remove shadow for cleaner look */
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.8); /* 👈 adds readability */
 }
-
-
 
 @media (prefers-color-scheme: light) {
     :root {
