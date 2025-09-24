@@ -6,36 +6,41 @@
     <script src="src/script.ts" type="module"></script>
 </head>
 <body>
-<!-- Left sidebar (empty for now) -->
+<!-- Landing Page -->
+<section id="landingPage">
+    <h1>Welcome to Your Spotify Queue</h1>
+    <button id="loginBtn">Log in with Spotify</button>
+</section>
+
+<!-- Left sidebar -->
 <aside class="leftSidebar"></aside>
 
 <a id="profile" href="https://accounts.spotify.com/login">
-        <img id="imgUrl" src="public/default-avatar.png" alt="Spotify Profile" />
+    <img id="imgUrl" src="public/default-avatar.png" alt="Spotify Profile" />
 </a>
 
-<section class="currentlyPlaying">
-    <!-- Background video -->
+<!-- Currently Playing Section (hidden initially) -->
+<section class="currentlyPlaying" style="display:none;">
     <video autoplay muted loop playsinline id="bgVideo">
         <source src="/background.mp4" type="video/mp4">
     </video>
-
-    <!-- Fallback image -->
     <img id="bgImage" src="/RedBlackWhiteBoldHorseAlbumCover.png" alt="Background Image">
 
-    <!-- Foreground content -->
     <div class="content">
         <h1 id="songTitle">Song Title</h1>
     </div>
-     <div class="danceContent">
-         <h1 id =danceTitle>Dance Title</h1>
-     </div>
+    <div class="danceContent">
+        <h1 id="danceTitle">Dance Title</h1>
+    </div>
 </section>
 
 <div id="upNextColumn"></div>
+
 <!-- Pop-out Button -->
 <button id="openPopoutBtn" class="popout-btn">
     <span class="icon">🗔</span> Present
 </button>
+
 <!-- Fullscreen Button -->
 <button id="fullscreenBtn" class="action-btn fullscreen-btn">
     <span class="icon">⛶</span> Fullscreen
@@ -46,3 +51,4 @@
 
 </body>
 </html>
+

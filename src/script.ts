@@ -12,6 +12,13 @@ import {
 
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 
+const landingPage = document.getElementById("landingPage")!;
+const loginBtn = document.getElementById("loginBtn")!;
+const currentlyPlayingSection = document.querySelector(".currentlyPlaying") as HTMLElement;
+
+loginBtn.addEventListener("click", async () => {
+    await redirectToAuthCodeFlow(clientId);
+});
 
 // ---------------- Main Initialization ----------------
 async function init() {
@@ -85,12 +92,16 @@ async function init() {
             }
 
             // If still no token after retries → single redirect
-            if (!accessToken) {
-                console.warn("Redirecting to Spotify login...");
-                await redirectToAuthCodeFlow(clientId);
-                return; // stop execution; page reloads
+            // If still no accessToken, show landing page and stop
+            if(!accessToken) {
+                landingPage.style.display = "block";
+                currentlyPlayingSection.style.display = "none";
+                return;
             }
         }
+        // Hide landing page and show player
+        landingPage.style.display = "none";
+        currentlyPlayingSection.style.display = "flex";
         // Setting up all the Button logic and controls
         setupSiteContentAndButtons();
         // Getting the user profile and image to display
@@ -121,6 +132,6 @@ function setupSiteContentAndButtons() {
     setupPartnerDanceButton();
 }
 
-init()
+init();
 
 
