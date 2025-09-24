@@ -1,7 +1,6 @@
 
-import { refreshAccessToken } from "../authCodeWithPkce.ts";
-// TODO make this an env variable
-const clientId = "bdb65f4eee034a86828ae4c9ee70a8e6"; // Replace with your client id
+import { refreshAccessToken } from "../Spotify/authCodeWithPkce.ts";
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 
 export async function fetchProfile(token: string): Promise<UserProfile> {
     console.log('Fetching user profile');
