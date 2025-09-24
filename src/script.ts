@@ -15,6 +15,9 @@ const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 
 // ---------------- Main Initialization ----------------
 async function init() {
+    /*const state = new URLSearchParams(window.location.search).get("state");
+    if (state === "fromSpotify=true")  */
+
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code") || null;
     const maxRetries = 3;

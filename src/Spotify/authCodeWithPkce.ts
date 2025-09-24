@@ -1,7 +1,7 @@
 const redirectUri =
     import.meta.env.MODE === "development"
-        ? "http://127.0.0.1:5173/spotifyQueue/?from=spotify"  // dev localhost
-        : "https://matyaskrizek.github.io/spotifyQueue/?from=spotify"; // production GitHub Pages
+        ? "http://127.0.0.1:5173/spotifyQueue/"  // dev localhost
+        : "https://matyaskrizek.github.io/spotifyQueue/"; // production GitHub Pages
 
 export async function redirectToAuthCodeFlow(clientId: string): Promise<void> {
     const verifier = generateCodeVerifier(128);
@@ -25,6 +25,8 @@ export async function redirectToAuthCodeFlow(clientId: string): Promise<void> {
     params.append("scope", scope);
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
+    // exactly the registered URI
+    params.append("state", "from=spotify");
 
     document.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
 }
