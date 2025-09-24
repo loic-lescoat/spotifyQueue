@@ -1,5 +1,5 @@
 import "/src/css/style.css";
-import {redirectToAuthCodeFlow, getAccessToken, refreshAccessToken, getCookie, setCookie, deleteCookie} from "./authCodeWithPkce";
+import {redirectToAuthCodeFlow, getAccessToken, refreshAccessToken, getCookie, setCookie, deleteCookie} from "./Spotify/authCodeWithPkce.ts";
 import {populateProfileImage, populateQueue, startQueuePolling} from "./LoadElements.ts"
 import {fetchQueue, fetchProfile} from "./services/spotifyService.ts"
 import {
@@ -10,9 +10,7 @@ import {
 } from "./pop-outWindow";
 
 
-// TODO make this an env variable
-const clientId = "bdb65f4eee034a86828ae4c9ee70a8e6"; // Make env var
-
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 
 
 // ---------------- Main Initialization ----------------
