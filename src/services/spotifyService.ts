@@ -55,9 +55,7 @@ async function fetchWithAuth(url: string, token: string, clientId: string) {
 
 // Example fetchCurrentlyPlaying function
 export async function fetchCurrentlyPlaying(token: string): Promise<any> {
-    const res = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-        headers: { Authorization: `Bearer ${token}` }
-    });
+    const res = await fetchWithAuth("https://api.spotify.com/v1/me/player/currently-playing", token, clientId);
     if (res.status === 204) return null;  // nothing playing
     return await res.json();
 }
