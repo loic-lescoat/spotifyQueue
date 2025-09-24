@@ -1,7 +1,7 @@
 const redirectUri =
     import.meta.env.MODE === "development"
-        ? "http://127.0.0.1:5173/spotifyQueue/spotify"  // dev localhost
-        : "https://matyaskrizek.github.io/spotifyQueue/spotify"; // production GitHub Pages
+        ? "http://127.0.0.1:5173/spotifyQueue/?from=spotify"  // dev localhost
+        : "https://matyaskrizek.github.io/spotifyQueue/?from=spotify"; // production GitHub Pages
 
 export async function redirectToAuthCodeFlow(clientId: string): Promise<void> {
     const verifier = generateCodeVerifier(128);
