@@ -1,4 +1,4 @@
-import "/src/css/style.css";
+
 import {redirectToAuthCodeFlow, getAccessToken, refreshAccessToken, getCookie, setCookie, deleteCookie} from "./Spotify/authCodeWithPkce.ts";
 import {populateProfileImage, populateQueue, startQueuePolling} from "./LoadElements.ts"
 import {fetchQueue, fetchProfile} from "./services/spotifyService.ts"
@@ -11,14 +11,8 @@ import {
 
 
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-
-const landingPage = document.getElementById("landingPage")!;
-const loginBtn = document.getElementById("loginBtn")!;
 const currentlyPlayingSection = document.querySelector(".currentlyPlaying") as HTMLElement;
 
-loginBtn.addEventListener("click", async () => {
-    await redirectToAuthCodeFlow(clientId);
-});
 
 // ---------------- Main Initialization ----------------
 async function init() {
@@ -49,7 +43,7 @@ async function init() {
     let retries: number = Number(getCookie("spotifyRetries") || "0");
 
     // I hate you typescript. Only you would infer that the return type 'undefined'
-    // would be a string and not actually undefined smh
+    // would be a string and not actually undefined smh 🤦‍♂️
     if(accessToken == "undefined"){
         accessToken = null;
     }
@@ -90,17 +84,12 @@ async function init() {
                     refreshToken = null;
                 }
             }
-
             // If still no token after retries → single redirect
-            // If still no accessToken, show landing page and stop
             if(!accessToken) {
-                landingPage.style.display = "block";
                 currentlyPlayingSection.style.display = "none";
                 return;
             }
         }
-        // Hide landing page and show player
-        landingPage.style.display = "none";
         currentlyPlayingSection.style.display = "flex";
         // Setting up all the Button logic and controls
         setupSiteContentAndButtons();
