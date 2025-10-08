@@ -1,34 +1,34 @@
 
-import {redirectToAuthCodeFlow, getAccessToken, refreshAccessToken, getCookie, setCookie, deleteCookie} from "./Spotify/authCodeWithPkce.ts";
-import {populateProfileImage, populateQueue, startQueuePolling} from "./LoadElements.ts"
+import {redirectToAuthCodeFlow, getUserAccessToken, refreshAccessToken, getCookie, setCookie, deleteCookie} from "./Spotify/authCodeWithPkce.ts";
+import {populateProfileImage, populateQueue, startQueuePolling} from "./windowLoaders/queueElementsLoader.ts"
 import {fetchQueue, fetchProfile} from "./services/spotifyService.ts"
 import {
     openPopout,
     toggleFullscreen,
     setupWindowControls,
     initFullscreenButton, setupPartnerDanceButton
-} from "./pop-outWindow";
+} from "./windowLoaders/pop-outWindowLoader.ts";
 
 
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const currentlyPlayingSection = document.querySelector(".currentlyPlaying") as HTMLElement;
-
+console.log("Running the script from the start");
 
 // ---------------- Main Initialization ----------------
 async function init() {
     /*const state = new URLSearchParams(window.location.search).get("state");
     if (state === "fromSpotify=true")  */
-
+    console.log("Running INIT()");
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code") || null;
     const maxRetries = 3;
     let accessToken: string | null = null;
     let refreshToken: string | null = null;
-
+    console.log("CODE: " + code);
     if (code) {
         try {
             console.log("Exchanging code for new access token...");
-            accessToken = await getAccessToken(clientId, code);// ✅ stop here — don’t check stale cookies
+            accessToken = await getUserAccessToken(clientId, code);
         } catch (err) {
             console.error("Code exchange failed, redirecting:", err);
             await redirectToAuthCodeFlow(clientId);
@@ -50,11 +50,18 @@ async function init() {
     if(refreshToken == "undefined"){
         refreshToken = null;
     }
+    console.log("accessToken: " + accessToken);
+    console.log("refreshToken: " + refreshToken);
 
     try {
         // Only retry locally if token missing or expired, up to maxRetries
+        console.log("in THE try");
         if (!accessToken || Date.now() > tokenExpiry) {
+
+            console.log("NO aCCESS tOKEN OR EXPIRED TOKEN");
             if (refreshToken && retries < maxRetries) {
+
+                console.log("Trying refresh");
                 try {
                     accessToken = await refreshAccessToken(clientId);
                     setCookie("spotifyAccessToken", accessToken, 1); // persist new access token
@@ -72,8 +79,9 @@ async function init() {
 
             // Try authorization code flow if refresh token fails
             if (!accessToken && code) {
+                console.log("Trying to get token");
                 try {
-                    accessToken = await getAccessToken(clientId, code);
+                    accessToken = await getUserAccessToken(clientId, code);
                     setCookie("spotifyAccessToken", accessToken, 1);
                     setCookie("spotifyRetries", "0", 1); // reset retries
                 } catch (err) {
@@ -86,7 +94,9 @@ async function init() {
             }
             // If still no token after retries → single redirect
             if(!accessToken) {
+                console.log("still no access token");
                 currentlyPlayingSection.style.display = "none";
+                await redirectToAuthCodeFlow(clientId);
                 return;
             }
         }

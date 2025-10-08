@@ -35,6 +35,19 @@ export async function fetchQueue(token: string): Promise<FullQueue | null> {
     }
 }
 
+// src/fetchAlbums.ts
+export async function fetchCountryAlbums(accessToken: string, limit = 20) {
+    const url = `https://api.spotify.com/v1/search?q=country&type=album&limit=${limit}`;
+    const res = await fetch(url, {
+        headers: { "Authorization": `Bearer ${accessToken}` }
+    });
+    const data = await res.json();
+
+    // Extract album image URLs (small size for background)
+    return data.albums.items.map((album: any) => album.images[2]?.url || album.images[0]?.url).filter(Boolean);
+}
+
+
 async function fetchWithAuth(url: string, token: string, clientId: string) {
     let result = await fetch(url, {
         headers: { Authorization: `Bearer ${token}` }

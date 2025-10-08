@@ -84,3 +84,35 @@ body.landing {
 .spotify-login-btn:active {
     transform: scale(0.97);
 }
+
+#floatingAlbums {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* so they don’t block clicks */
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-album {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+    border-radius: 8px;
+    animation: floatXY infinite alternate ease-in-out;
+}
+
+/* Float in both X and Y directions */
+@keyframes floatXY {
+    from {
+        transform: translate(0px, 0px);
+    }
+    to {
+        transform: translate(var(--float-x, 0px), var(--float-y, 0px));
+    }
+}
+
+

@@ -50,7 +50,7 @@ async function generateCodeChallenge(codeVerifier: string) {
         .replace(/=+$/, '');
 }
 
-export async function getAccessToken(clientId: string, code: string): Promise<string> {
+export async function getUserAccessToken(clientId: string, code: string): Promise<string> {
     const verifier = localStorage.getItem("verifier");
 
     const params = new URLSearchParams();
@@ -73,6 +73,26 @@ export async function getAccessToken(clientId: string, code: string): Promise<st
 
     return data.access_token;
 }
+
+// src/spotifyApi.ts
+export async function getSpotifyAccessToken(clientId: string, clientSecret: string) {
+    const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials");
+    params.append("client_id", clientId);
+
+    const res = await fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: {
+            "Authorization": "Basic " + btoa(`${clientId}:${clientSecret}`),
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params
+    });
+
+    const data = await res.json();
+    return data.access_token as string;
+}
+
 
 export async function refreshAccessToken(clientId: string): Promise<string> {
     const refreshToken = localStorage.getItem("refresh_token");

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Queue Master</title>
     <link rel="stylesheet" href="src/css/landingPage.css">
+
+    <script src="src/windowLoaders/landingPageLoader.ts" type="module"></script>
     <script type="module">
         import { redirectToAuthCodeFlow } from "./src/Spotify/authCodeWithPkce.ts";
 
@@ -15,22 +17,25 @@
 </head>
 
 <body class="landing">
-<div class="landing-container">
-    <h1 class="app-title">Queue Master</h1>
 
-    <div class="landing-island">
-        <p>
-            To use the app, connect with your Spotify account.<br><br>
-            You can join another user's jam (Jams last an hour and require restarting when they expire),
-            or use the same account that's playing music.<br><br>
-            If no music is playing, or you do not have a Premium account, nothing will be displayed.
-        </p>
+    <div class="floating-albums" id="floatingAlbums"></div>
 
-        <button id="loginBtn" class="spotify-login-btn">
-            <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" alt="Spotify Logo" />
-            Connect with Spotify
-        </button>
+    <div class="landing-container">
+        <h1 class="app-title">Queue Master</h1>
+
+        <div class="landing-island">
+            <p>
+                Connect with your Spotify account to use Queue Master.<br><br>
+                Join another user's jam (Jams last 1 hour) or use your own account to follow along.<br><br>
+                Note: If no music is playing or you don’t have a Premium account, the queue will be empty.<br><br>
+                Still in BETA so use at your own risk.<br><br>
+            </p>
+
+            <button id="loginBtn" class="spotify-login-btn">
+                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" alt="Spotify Logo" />
+                Connect with Spotify
+            </button>
+        </div>
     </div>
-</div>
 </body>
 </html>
