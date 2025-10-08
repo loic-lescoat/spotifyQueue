@@ -4,6 +4,8 @@ import { fetchCountryAlbums } from "../services/spotifyService.ts";
 const NUM_ALBUMS = 50; // number of floating album covers
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
+console.log("Id:" + clientId);
+console.log("SEC:" + clientSecret);
 const floatingContainer = document.getElementById("floatingAlbums")!;
 
 async function initFloatingAlbums() {
