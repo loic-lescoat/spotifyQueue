@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Spotify Profile</title>
+    <script src="src/script.ts" type="module"></script>
+    <link rel="stylesheet" href="src/css/queue.css">
+
+</head>
+<body>
+
+<!-- Left sidebar -->
+<aside class="leftSidebar"></aside>
+
+<a id="profile" href="https://accounts.spotify.com/login">
+    <img id="imgUrl" src="public/default-avatar.png" alt="Spotify Profile" />
+</a>
+
+<!-- Currently Playing Section (hidden initially) -->
+<section class="currentlyPlaying" style="display:none;">
+    <video autoplay muted loop playsinline id="bgVideo">
+        <source src="/background.mp4" type="video/mp4">
+    </video>
+    <img id="bgImage" src="/RedBlackWhiteBoldHorseAlbumCover.png" alt="Background Image">
+
+    <div class="content">
+        <h1 id="songTitle">Song Title</h1>
+    </div>
+    <div class="danceContent">
+        <h1 id="danceTitle">Dance Title</h1>
+    </div>
+</section>
+
+<div id="upNextColumn"></div>
+
+<!-- Pop-out Button -->
+<button id="openPopoutBtn" class="popout-btn">
+    <span class="icon">🗔</span> Present
+</button>
+
+<!-- Fullscreen Button -->
+<button id="fullscreenBtn" class="action-btn fullscreen-btn">
+    <span class="icon">⛶</span> Fullscreen
+</button>
+
+<!-- PartnerDance Button -->
+<button id="partnerDanceBtn" class="action-btn">Partner Dance</button>
+
+</body>
+</html>
+

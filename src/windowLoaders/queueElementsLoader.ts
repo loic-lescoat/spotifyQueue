@@ -1,5 +1,5 @@
-import {fetchQueue, fetchCurrentlyPlaying} from "./services/spotifyService.ts"
-import {loadSongDanceMap} from "./parsers/danceMapLoader.ts";
+import {fetchQueue, fetchCurrentlyPlaying} from "../services/spotifyService.ts"
+import {loadSongDanceMap} from "../parsers/danceMapLoader.ts";
 
 
 let lastTrackId: string | null = null;
