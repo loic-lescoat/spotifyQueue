@@ -16,13 +16,17 @@
     <img id="imgUrl" src="public/default-avatar.png" alt="Spotify Profile" />
 </a>
 
-<!-- Currently Playing Section (hidden initially) -->
-<section class="currentlyPlaying" style="display:none;">
+<!-- Background elements (always behind everything) -->
+<div id="backgroundContainer">
     <video autoplay muted loop playsinline id="bgVideo">
         <source src="/background.mp4" type="video/mp4">
     </video>
-    <img id="bgImage" src="/lineDanceBrown.png" alt="Background Image">
+    <img id="bgImage" src="/RedBlackWhiteBoldHorseAlbumCover.png" alt="Background Image" />
+</div>
 
+<!-- Currently Playing Section (hidden initially) -->
+<section class="currentlyPlaying" style="display:none;">
+    <img id="albumArt" src="/RedBlackWhiteBoldHorseAlbumCover.png" alt="Album Art">
     <div class="content">
         <h1 id="songTitle">Song Title</h1>
     </div>
@@ -33,18 +37,17 @@
 
 <div id="upNextColumn"></div>
 
-<!-- Pop-out Button -->
-<button id="openPopoutBtn" class="popout-btn">
-    <span class="icon">🗔</span> Present
-</button>
-
 <!-- Fullscreen Button -->
 <button id="fullscreenBtn" class="action-btn fullscreen-btn">
     <span class="icon">⛶</span> Fullscreen
 </button>
 
-<!-- PartnerDance Button -->
-<button id="partnerDanceBtn" class="action-btn">Partner Dance</button>
+<div id="bottomButtons">
+    <input type="file" id="bgUploadInput" accept="image/*" style="display: none;" />
+    <button id="openPopoutBtn" class="action-btn">Pop-out</button>
+    <button id="partnerDanceBtn" class="action-btn">Partner Dance</button>
+    <button id="uploadBgBtn" class="action-btn">Upload Background</button>
+</div>
 
 </body>
 </html>
