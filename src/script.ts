@@ -6,7 +6,7 @@ import {
     openPopout,
     toggleFullscreen,
     setupWindowControls,
-    initFullscreenButton, setupPartnerDanceButton
+    initFullscreenButton, setupPartnerDanceButton, setupBackgroundUploadButton
 } from "./windowLoaders/pop-outWindowLoader.ts";
 
 
@@ -121,6 +121,9 @@ async function init() {
 function setupSiteContentAndButtons() {
     // Call this once when the app starts
     setupWindowControls();
+
+    // Upload Background image logic
+    setupBackgroundUploadButton();
 
     // Hook buttons
     document.getElementById("openPopoutBtn")?.addEventListener("click", openPopout);

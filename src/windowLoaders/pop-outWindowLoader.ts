@@ -1,3 +1,6 @@
+
+const BG_IMG_STORAGE_KEY = "customBackgroundImage";
+
 export function openPopout() {
     const popout = window.open(
         window.location.href,
@@ -15,6 +18,7 @@ export function openPopout() {
         popout.addEventListener("load", () => {
             console.log("Pop-out loaded, syncing PartnerDance state…");
         });
+
     }
 }
 
@@ -34,6 +38,7 @@ export function setupWindowControls() {
         (document.getElementById("openPopoutBtn") as HTMLButtonElement)?.style.setProperty("display", "none");
         (document.getElementById("fullscreenBtn") as HTMLButtonElement)?.style.setProperty("display", "inline-block");
         (document.getElementById("profile") as HTMLElement)?.style.setProperty("display", "none");
+        (document.getElementById("uploadBgBtn") as HTMLElement)?.style.setProperty("display", "none");
     } else {
         // In main/original
         (document.getElementById("openPopoutBtn") as HTMLButtonElement)?.style.setProperty("display", "inline-block");
@@ -135,6 +140,69 @@ export function setupPartnerDanceButton() {
         updateDanceTitles();
     };
 }
+
+function applyBackground(imageUrl: string) {
+    if (!imageUrl) return;
+    const bgImage = document.getElementById("bgImage") as HTMLImageElement;
+    const bgVideo = document.getElementById("bgVideo") as HTMLVideoElement;
+    if (bgVideo) bgVideo.style.display = "none";
+
+    bgImage.src = imageUrl;
+    bgImage.style.display = "block";
+}
+
+export function setupBackgroundUploadButton() {
+    const uploadBgBtn = document.getElementById("uploadBgBtn")!;
+    const bgUploadInput = document.getElementById("bgUploadInput")!;
+    const bgImage = document.getElementById("bgImage") as HTMLImageElement;
+    console.log("setting up background");
+
+    // Restore background on page load
+
+    const cachedImage = localStorage.getItem(BG_IMG_STORAGE_KEY);
+    if (cachedImage) applyBackground(cachedImage);
+
+    // Handle background uploads
+    uploadBgBtn.addEventListener("click", () => bgUploadInput.click());
+
+    bgUploadInput.addEventListener("change", (event) => {
+        const file = (event.target as HTMLInputElement).files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const imageUrl = e.target?.result as string;
+
+            // Hide video if it exists
+            const bgVideo = document.getElementById("bgVideo") as HTMLVideoElement;
+            if (bgVideo) bgVideo.style.display = "none";
+
+            // Replace the image source
+            bgImage.src = imageUrl;
+            bgImage.style.display = "block";
+
+            // ✅ Cache the image (as Base64)
+            try {
+                localStorage.setItem(BG_IMG_STORAGE_KEY, imageUrl);
+            } catch (err) {
+                console.warn("Failed to save background image to localStorage (maybe too large):", err);
+            }
+
+            window.dispatchEvent(new StorageEvent("storage", {
+                key: BG_IMG_STORAGE_KEY,
+                newValue: imageUrl,
+            }));
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+// Event listener to make sure all updates to one window happen to others
+window.addEventListener("storage", (event) => {
+    if (event.key === BG_IMG_STORAGE_KEY && event.newValue) {
+        applyBackground(event.newValue);
+    }
+});
 
 
 

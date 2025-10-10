@@ -43,16 +43,16 @@ export function populateQueue(fullQueue: FullQueue) {
         }
     }
     // Updating the current song album cover
-    loadBackground((fullQueue.currently_playing as unknown as TrackObject).album?.images[0]?.url ?? (fullQueue.currently_playing as unknown as EpisodeObject).images[0]?.url ?? '');
+    loadCurrentlyPlayingAlbumCover((fullQueue.currently_playing as unknown as TrackObject).album?.images[0]?.url ?? (fullQueue.currently_playing as unknown as EpisodeObject).images[0]?.url ?? '');
 
     // Loading the next three songs in the queue
     const nextSongs: QueueItem[] = fullQueue.queue.slice(0, 3);
     displayNextThreeSongs(nextSongs);
 }
 
-function loadBackground(backgroundUrl: string | null) {
+function loadCurrentlyPlayingAlbumCover(backgroundUrl: string | null) {
     const video = document.getElementById("bgVideo") as HTMLVideoElement;
-    const image = document.getElementById("bgImage") as HTMLImageElement;
+    const image = document.getElementById("albumArt") as HTMLImageElement;
 
     if (!video || !image || !backgroundUrl) return;
 
