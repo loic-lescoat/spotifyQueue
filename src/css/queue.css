@@ -62,16 +62,15 @@ body {
 }
 
 /* ---------- Currently Playing Section ---------- */
-.currentlyPlaying {
-    position: relative;
+.currentlyPlaying img {
+    height: 25vh;               /* ¼ of viewport height */
+    width: auto;                /* auto width to maintain aspect ratio */
+    max-width: 25vh;            /* keep it roughly square */
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;      /* spacing below the image */
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-    text-align: center;
-    background: transparent;
 }
 
 #bgImage, #bgVideo {
