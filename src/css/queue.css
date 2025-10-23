@@ -77,9 +77,9 @@ body {
 }
 
 .currentlyPlaying img {
-    height: 25vh;
+    height: 40vh;
     width: auto;
-    max-width: 25vh;
+    max-width: 40vh;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
@@ -94,7 +94,7 @@ body {
 
 /* ---------- Titles ---------- */
 #songTitle, #danceTitle {
-    font-size: 2.2rem;
+    font-size: 3.5rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
     margin: 0.25rem 0;
 }
@@ -127,8 +127,8 @@ body {
 }
 
 .songItem img {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 10px;
     object-fit: cover;
     border: 2px solid rgba(255, 255, 255, 0.2);
