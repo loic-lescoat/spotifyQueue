@@ -135,10 +135,10 @@ export function setupPartnerDanceButton() {
     });
 
     // Expose reset for song change
-    (window as any).resetDanceTitle = () => {
+    /*(window as any).resetDanceTitle = () => {
         partnerDanceActive = false;
         updateDanceTitles();
-    };
+    };*/
 }
 
 function applyBackground(imageUrl: string) {
