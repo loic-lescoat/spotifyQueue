@@ -16,8 +16,6 @@ console.log("Running the script from the start");
 
 // ---------------- Main Initialization ----------------
 async function init() {
-    /*const state = new URLSearchParams(window.location.search).get("state");
-    if (state === "fromSpotify=true")  */
     console.log("Running INIT()");
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code") || null;
@@ -58,7 +56,7 @@ async function init() {
         console.log("in THE try");
         if (!accessToken || Date.now() > tokenExpiry) {
 
-            console.log("NO aCCESS tOKEN OR EXPIRED TOKEN");
+            console.log("NO ACCESS TOKEN OR EXPIRED TOKEN");
             if (refreshToken && retries < maxRetries) {
 
                 console.log("Trying refresh");

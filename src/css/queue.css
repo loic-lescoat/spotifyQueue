@@ -62,16 +62,31 @@ body {
 }
 
 /* ---------- Currently Playing Section ---------- */
+.currentlyPlaying {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Offset half of sidebar width */
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: auto;
+    max-width: 80vw;
+}
+
 .currentlyPlaying img {
-    height: 25vh;               /* ¼ of viewport height */
-    width: auto;                /* auto width to maintain aspect ratio */
-    max-width: 25vh;            /* keep it roughly square */
+    height: 25vh;
+    width: auto;
+    max-width: 25vh;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-    margin-bottom: 1.5rem;      /* spacing below the image */
-    z-index: 2;
+    margin-bottom: 1.5rem;
+    display: block;
 }
+
 
 #bgImage, #bgVideo {
     display: none;
@@ -79,7 +94,7 @@ body {
 
 /* ---------- Titles ---------- */
 #songTitle, #danceTitle {
-    font-size: 3rem;
+    font-size: 2.2rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
     margin: 0.25rem 0;
 }
