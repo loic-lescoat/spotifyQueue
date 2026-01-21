@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "browser-image-compression": "^2.0.2",
     "gh-pages": "^6.3.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2"

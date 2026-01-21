@@ -6,7 +6,7 @@ import {
     openPopout,
     toggleFullscreen,
     setupWindowControls,
-    initFullscreenButton, setupPartnerDanceButton, setupBackgroundUploadButton
+    initFullscreenButton, setupPartnerDanceButton, setupBackgroundUploadButton, setupBackground, initHideQueueButton
 } from "./windowLoaders/pop-outWindowLoader.ts";
 
 
@@ -117,19 +117,27 @@ async function init() {
 }
 
 function setupSiteContentAndButtons() {
+    console.log("Setting up background")
+    //Setting up the background
+    setupBackground();
+    console.log("Setting up window controls")
     // Call this once when the app starts
     setupWindowControls();
+    if(!window.opener) {
+        console.log("setting background upload button")
+        // Upload Background image logic
+        setupBackgroundUploadButton();
 
-    // Upload Background image logic
-    setupBackgroundUploadButton();
-
-    // Hook buttons
-    document.getElementById("openPopoutBtn")?.addEventListener("click", openPopout);
+        // Hook buttons
+        document.getElementById("openPopoutBtn")?.addEventListener("click", openPopout);
+    }
     document.getElementById("fullscreenBtn")?.addEventListener("click", toggleFullscreen);
     // Disappearing logic on the fullscreen button
     initFullscreenButton("fullscreenBtn");
     // Partner Dance Button Logic
     setupPartnerDanceButton();
+    // Hide Queue logic
+    initHideQueueButton();
 }
 
 init();

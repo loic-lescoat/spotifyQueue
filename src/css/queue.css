@@ -87,7 +87,6 @@ body {
     display: block;
 }
 
-
 #bgImage, #bgVideo {
     display: none;
 }
@@ -191,6 +190,16 @@ body {
 
 #uploadBgBtn:hover {
     background: linear-gradient(135deg, #8e8fff, #6a5af9);
+    transform: scale(1.05);
+}
+
+
+#hideQueueBtn {
+    background: linear-gradient(135deg, #5fc7ff, #7baffe);
+}
+
+#hideQueueBtn:hover {
+    background: linear-gradient(135deg, #5fc7ff, #7baffe);
     transform: scale(1.05);
 }
 
