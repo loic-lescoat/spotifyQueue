@@ -1,7 +1,6 @@
 "Man! I Feel Like a Woman","Electric Slide"
 "Shivers","Gives Me Shivers"
 APT,Gives Me Shivers
-Shake It Off,Gives Me Shivers
 September,Body Rock
 Uptown Funk,Body Rock
 Fireball,Ah Si
