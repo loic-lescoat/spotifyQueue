@@ -105,10 +105,7 @@ async function init() {
         const profile = await fetchProfile(accessToken);
         populateProfileImage(profile);
         // Fetching the queue
-        const fullQueue = await fetchQueue(accessToken);
-        if (fullQueue) populateQueue(fullQueue);
-        // Starting the constant queue refresh
-        startQueuePolling(accessToken);
+        pollQueueLoop(accessToken);
 
     } catch (err) {
         console.error("Initialization failed, redirecting:", err);
@@ -139,6 +136,29 @@ function setupSiteContentAndButtons() {
     // Hide Queue logic
     initHideQueueButton();
 }
+
+async function pollQueueLoop(accessToken:string){
+    try {
+        const fullQueue = await fetchQueue(accessToken);
+        if (fullQueue) populateQueue(fullQueue);
+        // Starting the constant queue refresh
+        startQueuePolling(accessToken);
+    } catch (e) {
+        const ErrorMessage = document.getElementById("songTitle")
+        if(ErrorMessage){
+            ErrorMessage.innerText = "No songs currently Playing";
+            ErrorMessage.style.visibility = "visible";
+        }
+        sleep(500);
+        pollQueueLoop(accessToken);
+    }
+
+}
+
+const sleep = (ms: number) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 
 init();
 
