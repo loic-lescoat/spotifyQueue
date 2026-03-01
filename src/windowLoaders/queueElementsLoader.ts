@@ -1,6 +1,9 @@
 import {fetchQueue, fetchCurrentlyPlaying} from "../services/spotifyService.ts"
 import {loadSongDanceMap} from "../parsers/danceMapLoader.ts";
 
+// we load qrcode.js in HTML using CDN
+declare var QRCode: any; // silence compiler during `npm run build`
+
 
 let lastTrackId: string | null = null;
 // @ts-ignore
