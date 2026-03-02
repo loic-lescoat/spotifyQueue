@@ -1,5 +1,6 @@
 import {fetchQueue, fetchCurrentlyPlaying} from "../services/spotifyService.ts"
 import {loadSongDanceMap} from "../parsers/danceMapLoader.ts";
+import { partnerDanceActive } from "./pop-outWindowLoader.ts";
 
 // we load qrcode.js in HTML using CDN
 declare var QRCode: any; // silence compiler during `npm run build`
@@ -85,7 +86,10 @@ export function populateQueue(fullQueue: FullQueue) {
     // Loading the next three songs in the queue
     const nextSongs: QueueItem[] = fullQueue.queue.slice(0, 3);
     displayNextSongs(nextSongs, 3);
-    displayTutorialQRCode(fullQueue.currently_playing.name);
+    // if this is a partner dance: no line dance tutorial QR code to be shown
+    if (!partnerDanceActive){
+      displayTutorialQRCode(fullQueue.currently_playing.name);
+    }
 }
 
 /*
