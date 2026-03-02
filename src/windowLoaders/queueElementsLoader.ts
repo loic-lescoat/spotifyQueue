@@ -94,9 +94,8 @@ export function populateQueue(fullQueue: FullQueue) {
 async function getTutorialUrl(song_name: string){
     const DISTANCE_THRESHOLD = 0.3;
     const API_HOST = 'loic.lescoat.me';
-    const API_PORT = '8005';
     try {
-        const response = await fetch(`http://${API_HOST}:${API_PORT}/linedance_database/tutorial_url?song_name=${encodeURIComponent(song_name)}`);
+        const response = await fetch(`https://${API_HOST}/linedance_database/tutorial_url?song_name=${encodeURIComponent(song_name)}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
